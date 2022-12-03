@@ -2,6 +2,10 @@ html {
     background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgAylqM5IdF737Igv3a4DVkp1jEJ8L-wFIBQ&usqp=CAU) no-repeat center center fixed;
     background-size: cover;
 }
+ h1 {
+    text-align: center;
+    color: beige;
+}
 
 /* The Modal (background) */
 .modal {
