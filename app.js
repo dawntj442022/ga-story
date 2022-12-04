@@ -1,3 +1,6 @@
+
+
+
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -23,3 +26,90 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+// function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+
+
+
+// var slides = document.querySelectorAll('#slides .slide');
+// var currentSlide = 0;
+// var slideInterval = setInterval(nextSlide,2000);
+
+// function nextSlide() {
+//     slides[currentSlide].className = 'slide';
+//     currentSlide = (currentSlide+1)%slides.length;
+//     slides[currentSlide].className = 'slide showing';
+// }
+
+const btn2 = document.querySelector("slide1").addEventListener("reset", mySlides)
+
+/*create class*/
+
+class gods {
+    constructor (name, role){
+        this.name = name;
+        this.role = role;
+    }
+}
+
+let mygod1 = new god ("P", "king");
+let mygod2 = new god ("o" ,"son");
+
+class goddess {
+    constructor (name, role){
+        this.name = name;
+        this.power = role;
+    }
+}
+
+let mygoddess1 = new goddess ("L", "queen")
+
+class human {
+    constructor (name, role){
+        this.name = name;
+        this.role = role;
+    }
+}
+
+let myhuman = new human ("S", "servant")
+
+
+
+
+// var button = document.getElementById("button");
+// var audio = document.getElementById("player");
+// button.addEventListener("click", function(){
+//   if(audio.paused){
+//     audio.play();
+//     button.innerHTML = "Pause";
+//   } else {
+//     audio.pause();
+//     button.innerHTML = "Play";
+//   }
+// });
