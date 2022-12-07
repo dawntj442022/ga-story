@@ -1,6 +1,4 @@
-
-
-
+/*Modal*/
 // Get the modal
 const modal = document.getElementById("myModal");
 
@@ -12,7 +10,7 @@ const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+  modal.style.display = "flex";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -27,6 +25,10 @@ window.onclick = function(event) {
   }
 }
 
+
+/*Carousel*/
+
+//first slide image to set and call to display
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -40,7 +42,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
-// function showSlides(n) {
+function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
@@ -55,7 +57,21 @@ function currentSlide(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 
+}
 
+const play = document.getElementsByClassName("buttonPlay")
+button.addEventListener("click", function(){
+      if(slide.paused){
+        slide.play();
+        button.innerHTML = "Pause";
+      } else {
+       slide.pause();
+        button.innerHTML = "Play";
+      }
+    }
+
+// const pause = document.getElementsByClassName("buttonPause")
+// const reset = document.getElementsByClassName("buttonReset")
 
 // var slides = document.querySelectorAll('#slides .slide');
 // var currentSlide = 0;
@@ -67,37 +83,37 @@ function currentSlide(n) {
 //     slides[currentSlide].className = 'slide showing';
 // }
 
-const btn2 = document.querySelector("slide1").addEventListener("reset", mySlides)
+//const btn2 = document.querySelector("slide1").addEventListener("reset", mySlides)
 
 /*create class*/
 
-class gods {
-    constructor (name, role){
-        this.name = name;
-        this.role = role;
-    }
-}
+// class gods {
+//     constructor (name, role){
+//         this.name = name;
+//         this.role = role;
+//     }
+// }
 
-let mygod1 = new god ("P", "king");
-let mygod2 = new god ("o" ,"son");
+// let mygod1 = new god ("P", "king");
+// let mygod2 = new god ("o" ,"son");
 
-class goddess {
-    constructor (name, role){
-        this.name = name;
-        this.power = role;
-    }
-}
+// class goddess {
+//     constructor (name, role){
+//         this.name = name;
+//         this.power = role;
+//     }
+// }
 
-let mygoddess1 = new goddess ("L", "queen")
+// let mygoddess1 = new goddess ("L", "queen")
 
-class human {
-    constructor (name, role){
-        this.name = name;
-        this.role = role;
-    }
-}
+// class human {
+//     constructor (name, role){
+//         this.name = name;
+//         this.role = role;
+//     }
+// }
 
-let myhuman = new human ("S", "servant")
+// let myhuman = new human ("S", "servant")
 
 
 
@@ -113,3 +129,4 @@ let myhuman = new human ("S", "servant")
 //     button.innerHTML = "Play";
 //   }
 // });
+)

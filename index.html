@@ -11,18 +11,21 @@
 
 <body>
     <h1>Noris Penthos!</h1>
-    <div id="google_translate_element"></div>
-
-    <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    }
-    </script>
-    
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
    <!-- Trigger/Open The Modal -->
 <button id="myBtn">Synopsis</button>
+
+<!--Google translate text-->
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 !-- Slideshow container -->
 <div class="slideshow-container">
@@ -59,7 +62,11 @@
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>
 
-<button id=slide1>Reset</button>
+<!--Add Play and Pause Button-->
+
+<button class='buttonPlay'></button>
+<button class='buttonPause'></button>
+<button class='button'></button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -68,6 +75,7 @@
     <span class="close">&times;</span>
     <p>Caution: This is a love story that has only been passed down through the ages and has now been written.  Each iteration of this story has which has  slightly different than the latter.  </p>
   </div>
+  
 </body>
 </html>
     
