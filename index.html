@@ -27,6 +27,38 @@ function googleTranslateElementInit() {
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+
+<body class="container mt-5 bg-dark">
+    <div class="d-flex mt-4 text-light" id="captions">
+    <div>His wind-swirled fingertips
+      untangle the roots of salt water,
+      thorned with wrens
+   </div>
+    <div> pecking at roans
+      whipping their manes
+      toward some new sunlight,
+      some new charred horse bit’s history.</div>
+    <div>Cornered into being a son
+      he should have never
+      left a snow-tipped leaf’s edge</div>
+    <div>in the hillside
+      where a barren cloud’s porous skull
+      keeps a winter house.</div>
+    <div>Coyote, open-jawed,
+      limp shoulder against his ear,
+      its silhouette: midnight blue
+      a satchel of stars where its tail snaps
+      awake</div>
+    </div>
+    <div class="mb-5">
+      <button id="start" class="btn btn-success mt-5 me-3">Start</button>
+      <button id="pause" class="btn btn-warning mt-5 me-3">Pause</button>
+      <button id="resume" class="btn btn-info mt-5 me-3">Resume</button>
+      <button id="cancel" class="btn btn-danger mt-5 me-3">Cancel</button>
+    </div>
+    <script src="./textToSpeech.js"></script>
+
+
 !-- Slideshow container -->
 <div class="slideshow-container">
 
@@ -62,12 +94,6 @@ function googleTranslateElementInit() {
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>
 
-<!--Add Play and Pause Button-->
-
-<button class='buttonPlay'></button>
-<button class='buttonPause'></button>
-<button class='button'></button>
-
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -76,7 +102,14 @@ function googleTranslateElementInit() {
     <p>Caution: This is a love story that has only been passed down through the ages and has now been written.  Each iteration of this story has which has  slightly different than the latter.  </p>
   </div>
   
-</body>
+ </body>
+<script src="./textToSpeech.js"></script>
 </html>
     
 
+
+<!-- Add Play and Pause Button
+
+<button class='buttonPlay'></button>
+<button class='buttonPause'></button>
+<button class='button'></button> -->
