@@ -1,3 +1,75 @@
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    let next = document.querySelector(".next")
+    let userAgent = navigator.userAgent
+    let browserName
+    if(userAgent.includes("Edg")) browserName = "Edge"
+    if(userAgent.includes("Chrome") && !userAgent.includes("Edg")) browserName = "Chrome"
+
+    console.log(browserName)
+    console.log('DOM fully loaded and parsed');
+    //declaring a new instance of JS speech API
+    let speech = new SpeechSynthesisUtterance();
+    
+    //assigning a language
+    speech.lang = "en";
+    speech.volume = 1
+    speech.rate = 1
+    //creating an empty array that will contain voices
+    let voice = []
+    let speed = 15000
+    let voiceIndex = 0
+    if (browserName === "Chrome") 
+    {
+        speed = 10000;
+        voiceIndex = 6;
+    }
+    //load voices asynchronously
+    window.speechSynthesis.onvoiceschanged = () => {
+      voices = window.speechSynthesis.getVoices();
+      speech.voice = voices[voiceIndex];
+      console.log(voices)
+    }
+  
+   
+    let captions = document.querySelectorAll("#captions p")
+    console.log(captions)
+    let i = 1
+    const speechCompleted = () => {
+      speech.text = captions[i].innerText
+       console.log(speech.text, i)
+      window.speechSynthesis.speak(speech);
+      i++
+      next.click()
+    //   if (i > captions.length -1) {
+    //     clearInterval(readCaptions)
+    //   }
+     }
+   
+    document.querySelector("#start").addEventListener("click", () => {
+      //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
+      //the set interval doesnt stop ==> clear set interval
+      speech.text = captions[0].innerText
+      console.log(speech.text)
+      window.speechSynthesis.speak(speech);
+      const readCaptions = setInterval(speechCompleted, speed) //just enuogh to fully read the whole prompt
+    });
+    
+    // document.querySelector("#pause").addEventListener("click", () => {
+    //   window.speechSynthesis.pause();
+    // });
+    
+    // document.querySelector("#resume").addEventListener("click", () => {
+    //   window.speechSynthesis.resume();
+    // });
+    
+    document.querySelector("#cancel").addEventListener("click", () => {
+      window.speechSynthesis.cancel();
+    });
+  });
+
+
+
 /*Modal*/
 // Get the modal
 const modal = document.getElementById("myModal");
@@ -24,6 +96,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
 
 
 /*Carousel*/
@@ -59,127 +132,3 @@ function showSlides(n) {
 
 }
 
-const play = document.getElementsByClassName("buttonPlay")
-button.addEventListener("click", function(){
-      if(slide.paused){
-        slide.play();
-        button.innerHTML = "Pause";
-      } else {
-       slide.pause();
-        button.innerHTML = "Play";
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-        console.log('DOM fully loaded and parsed');
-        //declaring a new instance of JS speech API
-        let speech = new SpeechSynthesisUtterance();
-        
-        //assigning a language
-        speech.lang = "en";
-        
-        //creating an empty array that will contain voices
-        let voice = []
-        
-        //load voices asynchronously
-        window.speechSynthesis.onvoiceschanged = () => {
-          voices = window.speechSynthesis.getVoices();
-          speech.voice = voices[51];
-        }
-      
-        speech.volume = 1
-        let captions = document.querySelectorAll("#captions > div")
-        let i = 1
-        const speechCompleted = () => {
-          speech.text = captions[i].innerText
-          // console.log(speech.text, i)
-          window.speechSynthesis.speak(speech);
-          i++
-          if (i > captions.length -1) {
-            clearInterval(readCaptions)
-          }
-        }
-       
-        document.querySelector("#start").addEventListener("click", () => {
-          //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
-          //the set interval doesnt stop ==> clear set interval
-          speech.text = captions[0].innerText
-          window.speechSynthesis.speak(speech);
-          const readCaptions = setInterval(speechCompleted, 6000) //just enuogh to fully read the whole prompt
-        });
-        
-        document.querySelector("#pause").addEventListener("click", () => {
-          window.speechSynthesis.pause();
-        });
-        
-        document.querySelector("#resume").addEventListener("click", () => {
-          window.speechSynthesis.resume();
-        });
-        
-        document.querySelector("#cancel").addEventListener("click", () => {
-          window.speechSynthesis.cancel();
-        });
-      });
-
-
-
-// const pause = document.getElementsByClassName("buttonPause")
-// const reset = document.getElementsByClassName("buttonReset")
-
-// var slides = document.querySelectorAll('#slides .slide');
-// var currentSlide = 0;
-// var slideInterval = setInterval(nextSlide,2000);
-
-// function nextSlide() {
-//     slides[currentSlide].className = 'slide';
-//     currentSlide = (currentSlide+1)%slides.length;
-//     slides[currentSlide].className = 'slide showing';
-// }
-
-//const btn2 = document.querySelector("slide1").addEventListener("reset", mySlides)
-
-/*create class*/
-
-// class gods {
-//     constructor (name, role){
-//         this.name = name;
-//         this.role = role;
-//     }
-// }
-
-// let mygod1 = new god ("P", "king");
-// let mygod2 = new god ("o" ,"son");
-
-// class goddess {
-//     constructor (name, role){
-//         this.name = name;
-//         this.power = role;
-//     }
-// }
-
-// let mygoddess1 = new goddess ("L", "queen")
-
-// class human {
-//     constructor (name, role){
-//         this.name = name;
-//         this.role = role;
-//     }
-// }
-
-// let myhuman = new human ("S", "servant")
-
-
-
-
-// var button = document.getElementById("button");
-// var audio = document.getElementById("player");
-// button.addEventListener("click", function(){
-//   if(audio.paused){
-//     audio.play();
-//     button.innerHTML = "Pause";
-//   } else {
-//     audio.pause();
-//     button.innerHTML = "Play";
-//   }
-// });
-)
