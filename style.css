@@ -1,3 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 html {
   background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgAylqM5IdF737Igv3a4DVkp1jEJ8L-wFIBQ&usqp=CAU)
     no-repeat center center fixed;
@@ -13,6 +19,43 @@ h1 {
 
 /* use 100% width and height and visibility hidden so that it does not appear before I click the button. */
 
+/* Carousal*/
+
+.images img:first-of-type {
+  display: block;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  text-align: center;
+  position: relative;
+}
+
+.slide:first-of-type {
+  display: block;
+}
+
+.btn {
+  position: relative;
+  top: auto;
+  width: max-content;
+  height: fit-content;
+  z-index: 10;
+  cursor: pointer;
+  background-color: white;
+  font-size: small;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Modal */
 .modal {
   position: fixed;
   left: 0;
@@ -57,9 +100,4 @@ h1 {
 .show-modal {
   opacity: 1;
   visibility: visible;
-}
-
-img {
-  height: 45%;
-  max-width: 45%;
 }
