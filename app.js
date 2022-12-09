@@ -1,145 +1,23 @@
-/*Carousel*/
+// Modal
 
-//first slide image to set and call to display
-let slideIndex = 1;
-showSlides(slideIndex);
+const myBtn = document.querySelector("#myBtn");
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".close");
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+//each windowOnClick, classlist toggle() will add CSS class if it does not exit in the classlist array and return true and false if the css class exists the method will remove the class.  Show those attributes on the click for the CCS property show-modal.
+
+function toggleModal() {
+  modal.classList.toggle("show-modal");
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-
-}
-
-//declaring a new instance of JS speech API
-let speech = new SpeechSynthesisUtterance();
-    
-//assigning a language
-speech.lang = "en";
-speech.volume = 1
-speech.rate = 1
-//creating an empty array that will contain voices
-let voice = []
-let speed = 15000
-let voiceIndex = 6
-// if (browserName === "Chrome") 
-
-  // speed = 15000;
-    // voiceIndex = 6;
-
-//load voices asynchronously
-let voices
-window.speechSynthesis.onvoiceschanged = () => {
-  voices = window.speechSynthesis.getVoices();
-  speech.voice = voices[voiceIndex];
-  console.log(voices)
-}
-
-// window.addEventListener('DOMContentLoaded', (event) => {
-    let next = document.querySelector(".next")
-    // let userAgent = navigator.userAgent
-    // let browserName
-    // if(userAgent.includes("Edg")) browserName = "Edge"
-    // if(userAgent.includes("Chrome") && !userAgent.includes("Edg")) browserName = "Chrome"
-
-    // console.log(browserName)
-    console.log('DOM fully loaded and parsed');
-    
-  
-   
-    let captions = document.querySelectorAll("#captions p")
-    console.log(captions)
-    let i = 1
-    const speechCompleted = () => {
-      speech.text = captions[i].innerText
-       console.log(speech.text, i)
-      window.speechSynthesis.speak(speech);
-      i++
-      next.click()
-    //   if (i > captions.length -1) {
-    //     clearInterval(readCaptions)
-    //   }
-     }
-   
-  document.querySelector("#start").addEventListener("click", () => {
-      //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
-      //the set interval doesnt stop ==> clear set interval
-      speech.text = captions[0].innerText
-      console.log(speech.text)
-      window.speechSynthesis.speak(speech);
-      const readCaptions = setInterval(speechCompleted, speed) //just enuogh to fully read the whole prompt
-    });
-    
-    document.querySelector("#pause").addEventListener("click", () => {
-     return
-     window.speechSynthesis.pause();
-      if (i > captions.length -1) {
-             clearInterval(readCaptions)
-         }
-    });
-    
-    document.querySelector("#resume").addEventListener("click", () => {
-     return 
-     window.speechSynthesis.resume();
-    });
-    
-    document.querySelector("#reset").addEventListener("click", () => {
-     return 
-     window.speechSynthesis.reset();
-    
-    });
-
-
-
-
-/*Modal*/
-// Get the modal
-const modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-const btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "flex";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+function windowOnClick(event) {
+  if (event.target === modal) {
+    toggleModal();
   }
 }
 
+// click the closeButton, I want to show the modal, when click the x I want to close the modal and when I click on the pinksalmon part I also want to hid the modal
 
-
-
-
+myBtn.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
