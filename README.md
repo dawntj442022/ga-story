@@ -1,46 +1,32 @@
-# ga-story
+Title: Story
+Build a Story using HTML, CSS and JavaScript.
 
-// const pause = document.getElementsByClassName("buttonPause")
-// const reset = document.getElementsByClassName("buttonReset")
+Motivation: Greek Mythology
+Created a story based on greek mythology love story. Created a modal, carousel of images, text and narration for end user.
 
-// var slides = document.querySelectorAll('#slides .slide');
-// var currentSlide = 0;
-// var slideInterval = setInterval(nextSlide,2000);
+Build Status: Unfinished
+Need to incorporate the narration portion within JavaScript.
 
-// function nextSlide() {
-// slides[currentSlide].className = 'slide';
-// currentSlide = (currentSlide+1)%slides.length;
-// slides[currentSlide].className = 'slide showing';
-// }
+Cody Style:
+Using modal, carousel of images and SpeechUtterance for narration.
 
-//const btn2 = document.querySelector("slide1").addEventListener("reset", mySlides)
+Screenshoots: unable to add screenshoots
 
-/_create class_/
+Tech/Framework used:
+Built with Visual Studios and Dom
 
-// class gods {
-// constructor (name, role){
-// this.name = name;
-// this.role = role;
-// }
-// }
+Features:
+Speech utterance feature.
 
-// let mygod1 = new god ("P", "king");
-// let mygod2 = new god ("o" ,"son");
+Tests & how to use:
+built for user experience. User test the front end of the project.
 
-// class goddess {
-// constructor (name, role){
-// this.name = name;
-// this.power = role;
-// }
-// }
+Contribute:
 
-// let mygoddess1 = new goddess ("L", "queen")
+!--Google translate text-->
 
-// class human {
-// constructor (name, role){
-// this.name = name;
-// this.role = role;
-// }
-// }
+<div id="google_translate_element"></div>
 
-// let myhuman = new human ("S", "servant")
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');

@@ -1,3 +1,32 @@
+console.log("linked Correctly");
+
+const synth = window.speechSynthesis;
+
+let voices;
+
+function loadVoices() {
+  voices = synth.getVoices();
+  for (let i = 0; i < voices.length; i++) {
+    const option = document.createElement("option");
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
+    option.value = i;
+    voiceSelect.appendChild(option);
+  }
+}
+
+// in Google Chrome the voices are not ready on page load
+if ("onvoiceschanged" in synth) {
+  synth.onvoiceschanged = loadVoices;
+} else {
+  loadVoices();
+}
+
+function textToSpeech(text) {
+  const utterThis = new SpeechSynthesisUtterance(text);
+  utterThis.voice = voices[voiceSelect.value];
+  synth.speak(utterThis);
+}
+
 // Modal
 
 const myBtn = document.querySelector("#myBtn");
@@ -24,31 +53,35 @@ window.addEventListener("click", windowOnClick);
 
 //Carousal
 
-let firstIndex = 0;
-let lastImgIndex = 0;
+let currentImgIndex = 0;
+let previousImgIndex = 0;
 const slides = document.querySelectorAll(".slide");
-const next = document.querySelector(".next");
+console.log(slides);
+const next = document.querySelector("#next-slide");
 
 next.addEventListener("click", () => {
-  lastImgIndex = firstImgIndex;
-  if (firstIndex < images.length + 1) {
-    firstIndex += 1;
+  // we may want to pause the text to speech
+
+  previousImgIndex = currentImgIndex;
+  if (currentImgIndex < slides.length - 1) {
+    currentImgIndex += 1;
   } else {
-    firstIndex = 0;
+    return;
   }
-  slides[firstIndex].style.display = "none";
-  slides[lastImgIndex].style.display = "block";
+  slides[currentImgIndex].style.display = "block";
+  slides[previousImgIndex].style.display = "none";
+  textToSpeech("I love your voice");
 });
 
 const prev = document.querySelector(".prev");
 
 prev.addEventListener("click", () => {
-  lastImgIndex = firstImgIndex;
-  if (firstIndex > 0) {
-    firstIndex -= 1;
+  previousImgIndex = currentImgIndex;
+  if (currentImgIndex > 0) {
+    currentImgIndex -= 1;
   } else {
-    firstIndex = slides.length - 1;
+    return;
   }
-  slides[firstIndex].style.display = "none";
-  slides[lastImgIndex].style.display = "block";
+  slides[currentImgIndex].style.display = "block";
+  slides[previousImgIndex].style.display = "none";
 });

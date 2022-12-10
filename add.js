@@ -153,16 +153,29 @@ cursor: pointer; height: 15px; width: 15px; margin: 0 2px; background-color:
 #bbb; border-radius: 50%; display: inline-block; transition: background-color
 0.6s ease; } .active, .dot:hover { background-color: #717171; } /* Fading
 animation */ .fade { animation-name: fade; animation-duration: 1.5s; }
-@keyframes fade { from { opacity: 0.4; } to { opacity: 1; } } /*Carousel*/ const
-next = document.querySelector(".next"); let currentImgIndex = 0; let
-previousImgIndex = 0; const images = document.querySelectorAll(".image");
+@keyframes fade { from { opacity: 0.4; } to { opacity: 1; } }
+
+
+
+/*Carousel*/ const
+next = document.querySelector(".next");
+ let currentImgIndex = 0; let
+previousImgIndex = 0; 
+const images = document.querySelectorAll(".image");
+
 next.addEventListener("click", () => { previousImgIndex = currentImgIndex + 1;
+
 images[previousImageIndex]; image.style.display = "none";
-images[currentImgIndex].style.display = "block"; if(currentImgIndex <
+images[currentImgIndex].style.display = "block"; 
+
+if(currentImgIndex <
 images.length - 1) { currentImgIndex += 1 }else { currentImgIndex = 0 } });
+
 previousImgIndex.addEventListener('click', () =>{
 images[previousImgIndex].style.display = 'none';
-images[currentImgIndex].style.display = 'block'; if (currentImgIndex > 0) {
+images[currentImgIndex].style.display = 'block';
+ 
+if (currentImgIndex > 0) {
 currentImgIndex -= 1 } else { currentImgIndex = images.length - 1 }
 if(currentImgIndex < images.length - 1) { currentImgIndex += 1 }else {
 currentImgIndex = 0 } // after currentImgIndex < images.length - 1 ?
@@ -179,6 +192,8 @@ i < slides.length; i++) { // slides[i].style.display = "none"; // } // for (let
 i = 0; i < dots.length; i++) { // dots[i].className =
 dots[i].className.replace(" active", ""); // } // slides[slideIndex -
 1].style.display = "block"; // dots[slideIndex - 1].className += " active"; // }
+
+
 //declaring a new instance of JS speech API let speech = new
 SpeechSynthesisUtterance(); //assigning a language speech.lang = "en";
 speech.volume = 1; speech.rate = 1; //creating an empty array that will contain
