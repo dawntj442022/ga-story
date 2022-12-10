@@ -1,8 +1,9 @@
 console.log("linked Correctly");
 
 const synth = window.speechSynthesis;
-
+let speech = new SpeechSynthesisUtterance();
 let voices;
+let voiceIndex = 6;
 
 function loadVoices() {
   voices = synth.getVoices();
@@ -10,11 +11,10 @@ function loadVoices() {
     const option = document.createElement("option");
     option.textContent = `${voices[i].name} (${voices[i].lang})`;
     option.value = i;
-    voiceSelect.appendChild(option);
+    // voiceSelect.appendChild(option);
   }
 }
 
-// in Google Chrome the voices are not ready on page load
 if ("onvoiceschanged" in synth) {
   synth.onvoiceschanged = loadVoices;
 } else {
@@ -23,7 +23,7 @@ if ("onvoiceschanged" in synth) {
 
 function textToSpeech(text) {
   const utterThis = new SpeechSynthesisUtterance(text);
-  utterThis.voice = voices[voiceSelect.value];
+  utterThis.voice = voices[voiceIndex];
   synth.speak(utterThis);
 }
 
@@ -61,7 +61,7 @@ const next = document.querySelector("#next-slide");
 
 next.addEventListener("click", () => {
   // we may want to pause the text to speech
-
+  window.speechSynthesis.pause();
   previousImgIndex = currentImgIndex;
   if (currentImgIndex < slides.length - 1) {
     currentImgIndex += 1;
@@ -70,7 +70,8 @@ next.addEventListener("click", () => {
   }
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
-  textToSpeech("I love your voice");
+  textToSpeech("#captions p");
+  console.log(textToSpeech);
 });
 
 const prev = document.querySelector(".prev");
@@ -84,4 +85,29 @@ prev.addEventListener("click", () => {
   }
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
+});
+
+let speechText;
+
+document.querySelector("#start").addEventListener("click", () => {
+  //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
+  //the set interval doesnt stop ==> clear set interval
+  speech.text = captions[0].innerText;
+  console.log(speech.text);
+  window.speechSynthesis.speak(speech);
+  const readCaptions = setInterval(speechCompleted, speed); //just enuogh to fully read the whole prompt
+});
+
+document.querySelector("#pause").addEventListener("click", () => {
+  window.speechSynthesis.pause();
+
+  console.log(pause);
+});
+
+document.querySelector("#resume").addEventListener("click", () => {
+  window.speechSynthesis.resume();
+});
+
+document.querySelector("#reset").addEventListener("click", () => {
+  window.speechSynthesis.reset();
 });

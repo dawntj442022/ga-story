@@ -30,3 +30,8 @@ Contribute:
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
+
+https://www.section.io/engineering-education/text-to-speech-in-javascript/
+
+https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/lang
