@@ -1,5 +1,27 @@
 console.log("linked Correctly");
 
+class gods {
+  constructor(name, gender, power) {
+    this.name = name;
+    this.gender = gender;
+    this.power = power;
+  }
+}
+
+const godsProstatis = new gods("Prostatatis", "male", "Protector");
+const godsOTheos = new gods("O Theos tou Polemon", "male", "War");
+const godsOThea = new gods("O Thea tou Nerou", "female", "Water");
+
+class superHuman {
+  constructor(name, ability, role) {
+    this.name = name;
+    this.gender = gender;
+    this.role = role;
+  }
+}
+
+const superHumanOfilia = new superHuman("Ofilia", "immortality", "servant");
+
 const synth = window.speechSynthesis;
 let speech = new SpeechSynthesisUtterance();
 let voices;
