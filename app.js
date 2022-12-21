@@ -61,7 +61,6 @@ const next = document.querySelector("#next-slide");
 
 next.addEventListener("click", () => {
   // we may want to pause the text to speech
-  window.speechSynthesis.pause();
   previousImgIndex = currentImgIndex;
   if (currentImgIndex < slides.length - 1) {
     currentImgIndex += 1;
@@ -70,7 +69,7 @@ next.addEventListener("click", () => {
   }
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
-  textToSpeech("#captions p");
+  textToSpeech("p");
   console.log(textToSpeech);
 });
 
@@ -83,31 +82,47 @@ prev.addEventListener("click", () => {
   } else {
     return;
   }
+  textToSpeech(" p");
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
 });
 
-let speechText;
+const reset = document.querySelector("#reset");
 
-document.querySelector("#start").addEventListener("click", () => {
-  //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
-  //the set interval doesnt stop ==> clear set interval
-  speech.text = captions[0].innerText;
-  console.log(speech.text);
-  window.speechSynthesis.speak(speech);
-  const readCaptions = setInterval(speechCompleted, speed); //just enuogh to fully read the whole prompt
+reset.addEventListener("click", () => {
+  previousImgIndex = currentImgIndex;
+  if (currentImgIndex > 0) {
+    currentImgIndex = 0;
+  } else {
+    return;
+  }
+  textToSpeech(" p");
+  slides[currentImgIndex].style.display = "block";
+  slides[previousImgIndex].style.display = "none";
 });
 
-document.querySelector("#pause").addEventListener("click", () => {
-  window.speechSynthesis.pause();
+// let speechText;
 
-  console.log(pause);
-});
+// document.querySelector("#start").addEventListener("click", () => {
+//   //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
+//   //the set interval doesnt stop ==> clear set interval
+//   speech.text = captions[0].innerText;
+//   console.log(speech.text);
+//   window.speechSynthesis.speak(speech);
+//   const readCaptions = setInterval(speechCompleted, speed); //just enuogh to fully read the whole prompt
+// });
 
-document.querySelector("#resume").addEventListener("click", () => {
-  window.speechSynthesis.resume();
-});
+// document.querySelector("#pause").addEventListener("click", () => {
+//   window.speechSynthesis.pause();
 
-document.querySelector("#reset").addEventListener("click", () => {
-  window.speechSynthesis.reset();
-});
+//   console.log(pause);
+// });
+
+// document.querySelector("#resume").addEventListener("click", () => {
+//   window.speechSynthesis.resume();
+// });
+
+// document.querySelector("#reset").addEventListener("click", () => {
+//   // window.speechSynthesis.reset();
+//   slides.reset(0);
+// });
