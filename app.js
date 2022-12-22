@@ -43,8 +43,6 @@ let speech = new SpeechSynthesisUtterance();
 let voices;
 let voiceIndex = 6;
 
-const readCaptions = setInterval(15000);
-
 function loadVoices() {
   voices = synth.getVoices();
   for (let i = 0; i < voices.length; i++) {
@@ -64,6 +62,7 @@ if ("onvoiceschanged" in synth) {
 function textToSpeech(text) {
   const utterThis = new SpeechSynthesisUtterance(text);
   utterThis.voice = voices[voiceIndex];
+  const readCaptions = setInterval(15000);
   synth.speak(utterThis);
 }
 
@@ -115,6 +114,7 @@ next.addEventListener("click", () => {
 const prev = document.querySelector(".prev");
 
 prev.addEventListener("click", () => {
+  window.speechSynthesis.reset();
   previousImgIndex = currentImgIndex;
   if (currentImgIndex > 0) {
     currentImgIndex -= 1;
@@ -138,9 +138,6 @@ reset.addEventListener("click", () => {
   textToSpeech(" p");
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
-  document.querySelector("#reset").addEventListener("click", () => {
-    window.speechSynthesis.reset();
-  });
 });
 
 let speechText;
@@ -160,3 +157,5 @@ document.querySelector("#pause").addEventListener("click", () => {
 document.querySelector("#resume").addEventListener("click", () => {
   window.speechSynthesis.resume();
 });
+
+// document.querySelector("#reset").addEventListener("click", () => {});
