@@ -1,7 +1,7 @@
 console.log("linked Correctly");
 
 class gods {
-  constructor(name, gender, power) {
+  constructor(name, gender, power, captions) {
     this.name = name;
     this.gender = gender;
     this.power = power;
@@ -13,7 +13,7 @@ const godsOTheos = new gods("O Theos tou Polemon", "male", "War");
 const godsOThea = new gods("O Thea tou Nerou", "female", "Water");
 
 class superHuman {
-  constructor(name, ability, role) {
+  constructor(name, ability, role, captions) {
     this.name = name;
     this.gender = gender;
     this.role = role;
