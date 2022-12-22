@@ -1,31 +1,49 @@
 console.log("linked Correctly");
 
 class gods {
-  constructor(name, gender, power, captions) {
+  constructor(name, power, captions) {
     this.name = name;
-    this.gender = gender;
     this.power = power;
+    this.captions = captions;
   }
 }
 
-const godsProstatis = new gods("Prostatatis", "male", "Protector");
-const godsOTheos = new gods("O Theos tou Polemon", "male", "War");
-const godsOThea = new gods("O Thea tou Nerou", "female", "Water");
+const godsProstatis = new gods(
+  "Prostatatis",
+  "Protector",
+  "I am the lord of the skys"
+);
+const godsOTheos = new gods(
+  "O Theos tou Polemon",
+  "male",
+  "I am the god of WaR"
+);
+const godsOThea = new gods(
+  "O Thea tou Nerou",
+  "female",
+  "I am the goddess of water"
+);
 
 class superHuman {
-  constructor(name, ability, role, captions) {
+  constructor(name, role, captions) {
     this.name = name;
-    this.gender = gender;
     this.role = role;
+    this.captions = captions;
   }
 }
 
-const superHumanOfilia = new superHuman("Ofilia", "immortality", "servant");
+const superHumanOfilia = new superHuman(
+  "Ofilia",
+  "servant",
+  "I give my immortal servitude"
+);
 
 const synth = window.speechSynthesis;
 let speech = new SpeechSynthesisUtterance();
 let voices;
 let voiceIndex = 6;
+
+const readCaptions = setInterval(15000);
 
 function loadVoices() {
   voices = synth.getVoices();
@@ -92,7 +110,6 @@ next.addEventListener("click", () => {
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
   textToSpeech("p");
-  console.log(textToSpeech);
 });
 
 const prev = document.querySelector(".prev");
@@ -121,30 +138,25 @@ reset.addEventListener("click", () => {
   textToSpeech(" p");
   slides[currentImgIndex].style.display = "block";
   slides[previousImgIndex].style.display = "none";
+  document.querySelector("#reset").addEventListener("click", () => {
+    window.speechSynthesis.reset();
+  });
 });
 
-// let speechText;
+let speechText;
 
-// document.querySelector("#start").addEventListener("click", () => {
-//   //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
-//   //the set interval doesnt stop ==> clear set interval
-//   speech.text = captions[0].innerText;
-//   console.log(speech.text);
-//   window.speechSynthesis.speak(speech);
-//   const readCaptions = setInterval(speechCompleted, speed); //just enuogh to fully read the whole prompt
-// });
+document.querySelector("#start").addEventListener("click", () => {
+  //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
+  //the set interval doesnt stop ==> clear set interval
+  speech.text = captions[0].innerText;
+  window.speechSynthesis.speak(speech);
+});
 
-// document.querySelector("#pause").addEventListener("click", () => {
-//   window.speechSynthesis.pause();
+document.querySelector("#pause").addEventListener("click", () => {
+  window.speechSynthesis.pause();
+  console.log(pause);
+});
 
-//   console.log(pause);
-// });
-
-// document.querySelector("#resume").addEventListener("click", () => {
-//   window.speechSynthesis.resume();
-// });
-
-// document.querySelector("#reset").addEventListener("click", () => {
-//   // window.speechSynthesis.reset();
-//   slides.reset(0);
-// });
+document.querySelector("#resume").addEventListener("click", () => {
+  window.speechSynthesis.resume();
+});
