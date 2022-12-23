@@ -131,28 +131,33 @@ class gods {
     this.captions = captions;
   }
 }
-const godsProstatis = {
+
+const godsonProstatis = {
   name: "Prostatatis",
   power: "Control the Wind",
-  captions: "the am the lord of the skys",
+  captions: "is the lord of the skys",
   character: function () {
-    return this.name + "has the power of " + this.role + "; " + this.captions;
+    return this.name + "has the power of " + this.power + "; " + this.captions;
   },
 };
+document.getElementById("godson").innerHTML = godsonProstatis.character();
 
 const godsOTheos = {
   name: "O Theos tou Polemon",
   power: "Strength and Strategy",
-  captions: "the god of WaR",
+  captions: "is the god of WaR",
   character: function () {
-    return this.name + "has the power of" + this.power + ";" + this.captions;
+    return (
+      this.name + "has the power of" + " " + this.power + ";" + this.captions
+    );
   },
 };
+document.getElementById("gods").innerHTML = godsOTheos.character();
 
-const godsOThea = {
+const goddessOThea = {
   name: "O Thea tou Nerou",
   power: "Water",
-  captions: "the goddess of water",
+  captions: "is the goddess of water",
   character: function () {
     return (
       this.name + "has the power over" + " " + this.power + ";" + this.captions
@@ -160,9 +165,7 @@ const godsOThea = {
   },
 };
 
-document.getElementById("gods").innerHTML = godsProstatis.character();
-document.getElementById("gods").innerHTML = godsOTheos.character();
-document.getElementById("gods").innerHTML = godsOThea.character();
+document.getElementById("goddess").innerHTML = goddessOThea.character();
 
 class superHuman {
   constructor(name, role, captions) {
@@ -180,5 +183,4 @@ const superHumanOfilia = {
     return this.name + " " + this.role + " " + this.captions;
   },
 };
-
 document.getElementById("human").innerHTML = superHumanOfilia.character();
