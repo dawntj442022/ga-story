@@ -6,8 +6,6 @@ const myBtn = document.querySelector("#myBtn");
 const modal = document.querySelector(".modal");
 const closeButton = document.querySelector(".close");
 
-//each windowOnClick, classlist toggle() will add CSS class if it does not exit in the classlist array and return true and false if the css class exists the method will remove the class.  Show those attributes on the click for the CCS property show-modal.
-
 function toggleModal() {
   modal.classList.toggle("show-modal");
 }
@@ -17,8 +15,6 @@ function windowOnClick(event) {
     toggleModal();
   }
 }
-
-// click the closeButton, I want to show the modal, when click the x I want to close the modal and when I click on the pinksalmon part I also want to hid the modal
 
 myBtn.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
@@ -34,7 +30,6 @@ const captions = document.querySelectorAll(".slide>p");
 const next = document.querySelector("#next-slide");
 
 next.addEventListener("click", () => {
-  // we may want to pause the text to speech
   previousImgIndex = currentImgIndex;
   if (currentImgIndex < slides.length - 1) {
     currentImgIndex += 1;
@@ -50,7 +45,6 @@ next.addEventListener("click", () => {
 const prev = document.querySelector(".prev");
 
 prev.addEventListener("click", () => {
-  //window.speechSynthesis.reset();
   previousImgIndex = currentImgIndex;
   if (currentImgIndex > 0) {
     currentImgIndex -= 1;
@@ -90,7 +84,6 @@ function loadVoices() {
     const option = document.createElement("option");
     option.textContent = `${voices[i].name} (${voices[i].lang})`;
     option.value = i;
-    // voiceSelect.appendChild(option);
   }
 }
 
@@ -103,13 +96,10 @@ if ("onvoiceschanged" in synth) {
 function textToSpeech(text) {
   speech.text = text;
   speech.voice = voices[voiceIndex];
-  //const readCaptions = setInterval(15000);
   synth.speak(speech);
 }
 
 document.querySelector("#start").addEventListener("click", () => {
-  //when we press starrt its wait 6 seconda before ==> this delay can be annoying for a user
-  //the set interval doesnt stop ==> clear set interval
   textToSpeech(captions[0].innerText);
 });
 
