@@ -43,16 +43,23 @@ h1 {
 }
 
 .btn {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
   position: relative;
-  top: auto;
-  width: max-content;
-  height: fit-content;
+  width: 75px;
+  height: 30px;
   z-index: 10;
   cursor: pointer;
-  background-color: beige;
   font-size: small;
-  padding: 10px;
+  padding: 16px;
   text-align: center;
+  font: bolder;
+  background-color: beige;
+}
+
+.btn:hover {
+  background-color: yellow;
 }
 
 /* Modal */
@@ -77,6 +84,16 @@ h1 {
   background-color: bisque;
   padding: 1rem 1.5rem;
   width: 24rem;
+}
+
+#myBtn {
+  height: 48px;
+  width: 65px;
+  background-color: beige;
+}
+
+#myBtn:hover {
+  background-color: yellow;
 }
 
 /* close the modal, with a x button at the to right corner, when hover over the x it changes colors */
