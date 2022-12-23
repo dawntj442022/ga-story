@@ -118,11 +118,11 @@ document.querySelector("#pause").addEventListener("click", () => {
   console.log(pause);
 });
 
-// document.querySelector("#resume").addEventListener("click", () => {
-//   window.speechSynthesis.resume();
-// });
+document.querySelector("#resume").addEventListener("click", () => {
+  synth.resume();
+});
 
-// document.querySelector("#reset").addEventListener("click", () => {});
+//Class, instances and function
 
 class gods {
   constructor(name, power, captions) {
@@ -131,22 +131,38 @@ class gods {
     this.captions = captions;
   }
 }
+const godsProstatis = {
+  name: "Prostatatis",
+  power: "Control the Wind",
+  captions: "the am the lord of the skys",
+  character: function () {
+    return this.name + "has the power of " + this.role + "; " + this.captions;
+  },
+};
 
-const godsProstatis = new gods(
-  "Prostatatis",
-  "Protector",
-  "I am the lord of the skys"
-);
-const godsOTheos = new gods(
-  "O Theos tou Polemon",
-  "male",
-  "I am the god of WaR"
-);
-const godsOThea = new gods(
-  "O Thea tou Nerou",
-  "female",
-  "I am the goddess of water"
-);
+const godsOTheos = {
+  name: "O Theos tou Polemon",
+  power: "Strength and Strategy",
+  captions: "the god of WaR",
+  character: function () {
+    return this.name + "has the power of" + this.power + ";" + this.captions;
+  },
+};
+
+const godsOThea = {
+  name: "O Thea tou Nerou",
+  power: "Water",
+  captions: "the goddess of water",
+  character: function () {
+    return (
+      this.name + "has the power over" + " " + this.power + ";" + this.captions
+    );
+  },
+};
+
+document.getElementById("gods").innerHTML = godsProstatis.character();
+document.getElementById("gods").innerHTML = godsOTheos.character();
+document.getElementById("gods").innerHTML = godsOThea.character();
 
 class superHuman {
   constructor(name, role, captions) {
@@ -160,9 +176,9 @@ const superHumanOfilia = {
   name: "Ofilia",
   role: "servant",
   captions: "who gave her immortal servitude to the gods",
-  charactor: function () {
+  character: function () {
     return this.name + " " + this.role + " " + this.captions;
   },
 };
 
-document.getElementById("human").innerHTML = superHumanOfilia.charactor();
+document.getElementById("human").innerHTML = superHumanOfilia.character();
