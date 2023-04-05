@@ -14,6 +14,7 @@ Screenshoots: unable to add screenshoots
 
 Tech/Framework used:
 Built with Visual Studios and Dom
+https://dashboard.heroku.com/apps/ga-story
 
 Features:
 Speech utterance feature.
